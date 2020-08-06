@@ -21,13 +21,7 @@ public class LoginController {
 	@SuppressWarnings("unchecked")
 	@RequestMapping(value="/login")
     public String showLoginPage(HttpServletRequest request){
-		List<String> msgs = (List<String>) request.getSession().getAttribute("MY_SESSION_MESSAGES");
-		if (msgs == null) {
-			msgs = new ArrayList<>();
-			request.getSession().setAttribute("MY_SESSION_MESSAGES", msgs);
-		}
-		msgs.add("session message");
-		request.getSession().setAttribute("MY_SESSION_MESSAGES", msgs);
+		request.getSession().setAttribute("MY_SESSION_MESSAGES", "session-message");
 		
         return "login";
     }

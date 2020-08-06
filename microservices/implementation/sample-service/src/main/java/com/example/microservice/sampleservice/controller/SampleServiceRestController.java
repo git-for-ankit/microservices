@@ -13,7 +13,7 @@ public class SampleServiceRestController {
 	@RequestMapping(value="/welcome")
     public ModelAndView welcomePage(HttpServletRequest request){
 		ModelAndView modelAndView = new ModelAndView("welcome");
-		//Object sessionData = request.getSession().getAttribute("MY_SESSION_MESSAGES");
+		Object sessionData = request.getSession().getAttribute("MY_SESSION_MESSAGES");
         return modelAndView;
     }
     

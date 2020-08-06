@@ -28,11 +28,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http
-		.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.NEVER).and()
 		.httpBasic().disable()
 		.authorizeRequests()
-		.antMatchers("/eureka/**").hasRole("ADMIN")
-		.antMatchers("/style/**", "/images/**", "/js/**","/login","/sample-service/**").permitAll()
+		.antMatchers("/style/**", "/images/**", "/js/**","/sample-service/**").permitAll()
 		.anyRequest().authenticated().and()
 		.formLogin().loginPage("/login").successHandler(successHandler()).permitAll().and()
 		.logout().permitAll().and()
