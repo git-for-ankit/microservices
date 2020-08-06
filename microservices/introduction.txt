@@ -1,0 +1,51 @@
+		This is the introduction part and in the implementation folder where I did the implementation of these things.			
+					
+					
+					|--------------------------------------------------------|
+					|							 |
+					|				Discover	         |
+					|				Service			 |
+					|				(Eureka)		 |
+					|							 |
+					|							 |
+				     Gateway							 |
+		Login -------->      Services						         |
+				     (Zuul)							 |
+					|							 |
+					|				Sample			 |
+					|			    Microservice		 |
+					|			(Spring Boot Application)	 |
+					|							 |
+					|--------------------------------------------------------|
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+					
+		-	Create an Instance of Gateway Service using Spring boot-zuul combination
+		-	Create an instance  of Discovery service using Spring boot- eureka server combination
+		-	Create Simple Spring boot microservice and register it with the discovery service
+		
+---------------------------------------------------------------------------------------------------------------------------------------------		
+						Gateway																									
+						Services																					
+						(Zuul)																	
+						   |
+						   |
+		-	Should have a login page
+		-	Create couple of in-memory users
+		-	On successful login the security context should be saved using “Spring Session ”
+		-	On successful login pass the request to Sample microservice to get the landing page
+		-	Microservice call should be by communicating with the discovery service
+		-	Hardcoded port and ip cannot be used
+	
+	
+----------------------------------------------------------------------------------------------------------------------------------------------
+						Sample						
+					     Microservice					
+					(Spring Boot Application)
+						    |
+						    |
+		-	Should have a simple landing page which displays current logged in user details
+		-	The security context has to use Spring session to get the user details
+
+-----------------------------------------------------------------------------------------------------------------------------------------------
+Author: Ankit Anand
