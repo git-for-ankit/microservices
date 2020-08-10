@@ -33,7 +33,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.antMatchers("/style/**", "/images/**", "/js/**","/sample-service/**").permitAll()
 		.anyRequest().authenticated().and()
 		.formLogin().loginPage("/login").successHandler(successHandler()).permitAll().and()
-		.logout().permitAll().and()
 		.csrf().disable();
 	}
 	@Autowired 
@@ -44,4 +43,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 }
 
-
+ 
