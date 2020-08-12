@@ -1,35 +1,28 @@
 package com.example.microservice.gatewayservice.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-
 import com.example.microservice.gatewayservice.clients.SampleServiceClient;
-
+import com.example.microservice.gatewayservice.filters.SessionSavingZuulPreFilter;
 
 @Controller
 public class LoginController {
-	@Autowired
-	SampleServiceClient serviceCall;
+	private final Logger LOGGER = LoggerFactory.getLogger(LoginController.class);
 	
-	@SuppressWarnings("unchecked")
+	@Autowired
+	SampleServiceClient serviceCall;		//in future for internal calls.
+	
 	@RequestMapping(value="/login")
-    public String showLoginPage(HttpServletRequest request){
-		List<String> msgs = (List<String>) request.getSession().getAttribute("MY_SESSION_MESSAGES");
-		if (msgs == null) {
-			msgs = new ArrayList<>();
-			request.getSession().setAttribute("MY_SESSION_MESSAGES", msgs);
-		}
-		msgs.add("session message");
-		request.getSession().setAttribute("MY_SESSION_MESSAGES", msgs);
-		
-        return "login";
+    public String showLoginPage(HttpServletRequest request, HttpSession session){
+		LOGGER.info("EXECFLOW -> LoginController -> showLoginPage()");
+		return "login";
     }
-    
+	
 }
