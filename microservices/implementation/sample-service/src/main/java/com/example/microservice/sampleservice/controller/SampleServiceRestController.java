@@ -26,12 +26,15 @@ public class SampleServiceRestController {
 		ModelAndView modelAndView = new ModelAndView("welcome");
 		String sessionID = null;
 		for(Cookie cookie : request.getCookies()) {
-			if(cookie.getName().equals("SESSION"))
+			if(cookie.getName().equals("SESSION")) {
 				sessionID = cookie.getValue();
+				LOGGER.info("SESSION ID OF SPRING GENERATED AND REQUEST OBJECT: " + sessionID);
+			}
 		}
 		
 		Session session = sessionRepository.findById(request.getSession(false).getId());
 		String sessionDATA = session.getAttribute("msg");
+		LOGGER.info("SESSION SAVED DATA : " + sessionDATA);
 		String currentUserName = SecurityContextHolder.getContext().getAuthentication().getName();
 		modelAndView.addObject("USERNAME", currentUserName);
 		modelAndView.addObject("SESSION", sessionID);
